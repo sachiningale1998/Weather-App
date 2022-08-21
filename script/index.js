@@ -25,29 +25,29 @@ let container = document.getElementById("container");
 
 async function getWeather(){
     try{
-        let city =document.getElementById("city").value ;
+        let city =document.getElementById("cityInput").value ;
         let res = await fetch(
 `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=cc4f46c623570bc0183451d67219999b&units=metric`
         )
         let data = await res.json();
-        console.log('data: ', data);
+        // console.log('data: ', data);
         let latlong=[];
         let longi = data.coord.lon ;
-        console.log('lon: ', longi);
+        // console.log('lon: ', longi);
         
         let latti = data.coord.lat ;
-        console.log('lat: ', latti);
+        // console.log('lat: ', latti);
 
         latlong.push(longi,latti);
         let id = data.id ;
-        console.log('id: ', id);
+        // console.log('id: ', id);
         
         search7(data,latlong);
         appendInfo(data);
         appendinmap(data)
 
     }catch(error){
-        console.log('error: ', error);
+        // console.log('error: ', error);
     }
 }
 function appendInfo(data){
@@ -103,15 +103,15 @@ document.querySelector("#divup").append(div, div2);
 }
 async function search7(data,latlong){
 try{
-    let city = document.getElementById("city").value ;
+    let city = document.getElementById("cityInput").value ;
     let res1 = await fetch(
         `https://api.openweathermap.org/data/2.5/onecall?lat=${latlong[1]}&lon=${latlong[0]}&appid=cc4f46c623570bc0183451d67219999b&units=metric`
     )
     let weekdata = await res1.json();
-     console.log('weekdatafisrt: ', weekdata);
+    //  console.log('weekdatafisrt: ', weekdata);
 
    let weekdata1 = weekdata.daily ;
-    console.log('weekdatadaily: ', weekdata1);
+    // console.log('weekdatadaily: ', weekdata1);
     
 
     let weekdata2 = [];
@@ -121,7 +121,7 @@ try{
     appendData(weekdata2)
 
 }catch(error){
-    console.log('error: ', error);
+    // console.log('error: ', error);
 
 }  
 }  
@@ -138,7 +138,7 @@ try{
     let sDate = new Date(element.dt * 1000);
 
     let weeks = sDate.getDay();
-    console.log('weeks: ', weeks);
+    // console.log('weeks: ', weeks);
 
     let day1 = document.createElement("p");
     day1.innerText = day[weeks];
