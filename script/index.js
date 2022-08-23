@@ -147,10 +147,10 @@ try{
     logo.src = `http://openweathermap.org/img/wn/${element.weather[0].icon}.png` ;
 
     let mintemp = document.createElement("p");
-    mintemp.innerText = element.temp.min ;
+    mintemp.innerText = `Min Temp: ${element.temp.min}` ;
 
     let maxtemp = document.createElement("p");
-    maxtemp.innerText = element.temp.max
+    maxtemp.innerText = `Max Temp: ${element.temp.max}`
 
 
     div1.append(day1,logo,mintemp,maxtemp)
